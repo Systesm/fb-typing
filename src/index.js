@@ -16,7 +16,7 @@ let TypetoFriends = async (friends, fb_dtsg, cookies) => {
         typing(receiver, fb_dtsg, cookies)
     }
     console.log(chalk.blue.bold('[...] ') + chalk.yellow.bold('Chờ đợi là hạnh phúc (20s)'))
-    await timeout(25000)
+    await timeout(20000)
     TypetoFriends(friends, fb_dtsg, cookies)
 }
 

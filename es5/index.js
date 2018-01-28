@@ -41,7 +41,7 @@ var TypetoFriends = async function TypetoFriends(friends, fb_dtsg, cookies) {
         (0, _typing.typing)(receiver, fb_dtsg, cookies);
     }
     console.log(_chalk2.default.blue.bold('[...] ') + _chalk2.default.yellow.bold('Chờ đợi là hạnh phúc (20s)'));
-    await timeout(25000);
+    await timeout(20000);
     TypetoFriends(friends, fb_dtsg, cookies);
 };
 
