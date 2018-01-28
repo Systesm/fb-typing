@@ -50,16 +50,24 @@ var TypetoFriends = async function TypetoFriends(friends, fb_dtsg, cookies) {
 
         console.log(_chalk2.default.blue.bold('Facebook Typing') + _chalk2.default.white(' by ') + _chalk2.default.green.underline.bold('GTFAF (fb.me/GTFAF)'));
 
-        var username = await new _promptInput2.default({
-            name: 'first',
-            message: 'Nhập tài khoản của bạn'
-        }).run();
+        var args = process.argv.slice(2); //Add user from command
+        var username = void 0;
+        var password = void 0;
+        if (args.length == 4 && args[0] == '--username' && args[2] == '--password') {
+            username = args[1];
+            password = args[3];
+        } else {
+            username = await new _promptInput2.default({
+                name: 'first',
+                message: 'Nhập tài khoản của bạn'
+            }).run();
 
-        var password = await new _promptPassword2.default({
-            type: 'password',
-            message: 'Nhập mật khẩu của bạn',
-            name: 'password'
-        }).run();
+            password = await new _promptPassword2.default({
+                type: 'password',
+                message: 'Nhập mật khẩu của bạn',
+                name: 'password'
+            }).run();
+        }
 
         if (typeof username == 'undefined' || username.length < 5 || typeof password == 'undefined' || password.length < 5) throw _chalk2.default.bgRed.white.bold('Tài khoản hoặc mật khẩu vui lòng nhập hơn 5 ký tự');
 

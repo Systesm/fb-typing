@@ -25,16 +25,24 @@ let TypetoFriends = async (friends, fb_dtsg, cookies) => {
 
         console.log(chalk.blue.bold('Facebook Typing') + chalk.white(' by ') + chalk.green.underline.bold('GTFAF (fb.me/GTFAF)'));
 
-        let username = await new Input({
-            name: 'first',
-            message: 'Nhập tài khoản của bạn'
-        }).run()
+        let args = process.argv.slice(2) //Add user from command
+        let username;
+        let password;
+        if (args.length == 4 && args[0] == '--username' && args[2] == '--password') {
+            username = args[1]
+            password = args[3]
+        } else {
+            username = await new Input({
+                name: 'first',
+                message: 'Nhập tài khoản của bạn'
+            }).run()
 
-        let password = await new Password({
-            type: 'password',
-            message: 'Nhập mật khẩu của bạn',
-            name: 'password'
-        }).run()
+            password = await new Password({
+                type: 'password',
+                message: 'Nhập mật khẩu của bạn',
+                name: 'password'
+            }).run()
+        }
 
         if (typeof username == 'undefined' ||
         username.length < 5 ||
